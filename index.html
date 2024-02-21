@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>ProtLLM: An Interleaved Protein-Language LLM with Protein-as-Word Pre-Training</title>
+  <link rel="icon" type="image/x-icon" href="static/images/logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              <img src="static/images/logo.png" style="width:2em;vertical-align: middle" alt="Logo"/> 
+              <span class="protllm" style="vertical-align: middle">ProtLLM</span>
+            </h1>
+            <h2 class="subtitle is-3 publication-subtitle">
+              An Interleaved Protein-Language LLM with
+              <br>
+              Protein-as-Word Pre-Training
+            </h2>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+                 <span class="author-block">
+                    <a href="https://le-zhuo.com/" target="_blank">Le Zhuo*<sup style="color:#ffac33;">2</sup></a>,
+                  </span>
+                  <span class="author-block">
+                    Zewen Chi*<sup style="color:#6fbf73;">1</sup>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://chrisallenming.github.io/" target="_blank">Minghao Xu*<sup style="color:#ed4b82;">3</sup></a>,
+                  </span>
+                  <span class="author-block">
+                    Heyan Huang<sup style="color:#6fbf73;">1</sup>
+                  </span><br>
+                  <span class="author-block">
+                    Heqi Zheng<sup style="color:#886a50;">4
+                    </span>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://conghui.github.io/" target="_blank">Conghui He<sup style="color:#0664d0;">5
+                    </span></a>,
+                  </span>
+                  <span class="author-block">
+                    Xian-Ling Mao<sup style="color:#6fbf73;">1</sup>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://zwt233.github.io/" target="_blank">Wentao Zhang<sup style="color:#ed4b82;">3,</sup></a>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block"><sup style="color:#6fbf73;">1</sup>School of Computer Science and Technology, Beijing Institute of Technology,</span><br>
+                    <span class="author-block"><sup style="color:#ffac33;">2</sup>Beihang University,</span> 
+                    <span class="author-block"><sup style="color:#ed4b82;">3</sup>Center for Machine Learning Research, Peking University,</span><br>
+                    <span class="author-block"><sup style="color:#886a50;">4</sup>State Grid Smart Grid Research Institute Co., Ltd.,</span><br>
+                    <span class="author-block"><sup style="color:#0664d0;">5</sup>Shanghai Artificial Intelligence Laboratory</span>
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+                  </div>
+
+                  <br>
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">*Equal Contribution,</span>
+                    <span class="author-block">†Corresponding Authors</span><br>
+                    <span class="author-block">Corresponding to:</span>
+                    <span class="author-block"><a href="mailto:zhuole1025@gmail.com">zhuole1025@gmail.com</a>,</span>
+                    <span class="author-block"><a href="mailto:czw@bit.edu.cn">czw@bit.edu.cn</a>,</span>
+                    <span class="author-block"><a href="mailto:chrisallenming@gmail.com">chrisallenming@gmail.com</a></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- Github link -->
+                <span class="link-block">
+                  <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <!-- <i class="far fa-images"></i> -->
+                      <p style="font-size:18px">🤗</p>
+                      <!-- 🔗 -->
+                  </span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <!-- <i class="far fa-images"></i> -->
+                      <p style="font-size:18px">🤗</p>
+                      <!-- 🔗 -->
+                  </span>
+                  <span>Model</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" width="100%" src="static/images/demo.gif" style="display: block; margin: auto;">
+
+      <h2 class="content has-text-centered">
+        <b>ProtLLM</b> enables versatile downstream tasks for protein understanding: (1) protein-centric tasks, which include supervised fine-tuning on conventional benchmarks; (2) protein-text in-context learning, where we show the unique ability of ProtLLM by in-context learning on protein-protein interaction prediction; (3) text-guided functional protein retrieval, where we conduct a real-world enzyme mining task as a proof-of-concept study to validate the retrieval capability of ProtLLM.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- Paper abstract -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Introduction</h2>
+        <div class="content has-text-justified">
+          <p>
+            We propose <b>ProtLLM</b>, a versatile cross-modal large language model (LLM) for both protein-centric and protein-language tasks. ProtLLM features a unique dynamic protein mounting mechanism, enabling it to handle complex inputs where the natural language text is interspersed with an arbitrary number of proteins. Besides, we propose the protein-as-word language modeling approach to train ProtLLM. By developing a specialized protein vocabulary, we equip the model with the capability to predict not just natural language but also proteins from a vast pool of candidates. Additionally, we construct a large-scale <b>inter</b>leaved <b>p</b>rotein-<b>t</b>ext dataset, named <b>InterPT</b>, for pre-training. This dataset comprehensively encompasses both (1) structured data sources like protein annotations and (2) unstructured data sources like biological research papers, thereby endowing ProtLLM with crucial knowledge for understanding proteins. We evaluate ProtLLM on classic supervised protein-centric tasks and explore its novel protein-language applications. Experimental results demonstrate that ProtLLM not only achieves superior performance against protein-specialized baselines on protein-centric tasks but also induces zero-shot and in-context learning capabilities on protein-language tasks.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 protllm">
+      <span class="protein-centric" style="vertical-align: middle">ProtLLM Overview</span>
+    </h1>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"> Model Architecture</h2>
+        <div class="content has-text-justified">
+          <p>
+            The architecture of ProtLLM consists of an autoregressive transformer, a protein encoder, and cross-modal connectors. The connectors are placed at the input layer and the output layer of the LLM, respectively. Specifically, the output-layer connector also serves as a prediction head, allowing our model to perform protein retrieval and multi-choice protein answering tasks without requiring the LLM to generate complicated protein names. With dynamic protein mounting, ProtLLM adeptly handles free-form interleaved protein-text sequences with an arbitrary number of proteins in the input. ProtLLM is pre-trained with protein-as-word language modeling that unifies word and protein prediction by constructing a protein vocabulary.
+          </p>
+          <div class="content has-text-centered">
+          <img src="static/images/protllm.png" alt="model" class="center">
+          <p> Overview of <b>ProtLLM</b>.
+          </p>
+          </div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="columns is-centered m-6">
+      <div class="column column is-full has-text-centered content">
+        <h2 class="title is-3"> Pre-training Dataset</h2>
+        <div class="content has-text-justified">
+          <p>
+            We propose a large-scale interleaved protein-text multimodal dataset, named InterPT, to pre-train ProtLLM with comprehensive protein-related knowledge. This dataset encompasses three types of data sources, i.e., multi-protein scientific articles, protein-annotation pairs, and protein instruction-following data. 
+          </p>
+          <ul>
+            <li>
+              <b>Multi-protein scientific articles</b>: These data describe complex relationships among different proteins found in biological research, where each sample could contain multiple proteins. Unlike data presented in structured formats such as pairs or knowledge graphs, these articles offer detailed insights in unstructured natural language.
+            </li>
+            <li>
+              <b>Protein-annotation pairs</b>: This data maps individual proteins to their textual annotations such as function descriptions. We utilize it for two tasks, i.e., protein-to-text prediction and text-to-protein prediction, with the probability of 0.8 and 0.2, respectively. Besides, during pre-training, we interleave the data into longer sequences by concatenating multiple pairs into a single sequence.
+            </li>
+            <li>
+              <b>Protein instruction-following data</b>: This data is in the instruction-following style, typically requiring the model to generate open-ended text given a protein and an instruction. We select the data items of proteins from the Mol-Instructions dataset and include them into InterPT. We also concatenate multiple instruction-following data into a single pre-training example, so as to improve training efficiency and acquire in-context learning capabilities.
+            </li>
+          </ul>
+          <div class="content has-text-centered">
+          <img src="static/images/dataset.png" alt="model" class="center" width="50%">
+          <p> Category and statistics of <b>InterPT</b> components.
+          </p>
+          </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+<!-- RESULTS SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 protllm">
+      <span class="protein-centric" style="vertical-align: middle">Experimental Results</span>
+    </h1>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <h2 class="title is-3">Protein-Centric Tasks</h2>
+        <div class="content has-text-justified">
+          <p>
+            We adopt three standard tasks in protein understanding to validate our method: Enzyme Commission (EC) number prediction, Gene Ontology (GO) term prediction, and Protein-Protein Interaction (PPI) prediction. ProtLLM consistently shows competitive or even superior performance compared to both protein-only and protein-text approaches across all benchmarks, indicating the effectiveness of our proposed framework on conventional close-ended protein understanding tasks. Remarkably, ProtLLM obtain 0.596 Fmax  and 0.469 AUPR on GO-CC, which outperforms ProtST by a large margin. ProtLLM directly uses pre-trained ProtST as the protein encoder, with the key difference lying in our LLM decoder and pre-training stage for alignment. By comparing ProtLLM with ProtST, the overall improvements strongly highlight the potential benefits of incorporating richer protein-text information and scaling the size of the language model.
+          </p>
+        </div>
+        
+        <div class="content has-text-centered">
+          <img src="static/images/exp1.png" alt="exp1" width="95%">
+          <p> Comparative benchmark results on protein-centric tasks. We use AUPR and Fmax on EC and GO prediction and accuracy (%) on PPI prediction. Bold figures denote the best performance. '-' indicates not applicable. </p>
+          <br>
+        </div>
+
+        <h2 class="title is-3">Protein-Text In-Context Learning</h2>
+        <div class="content has-text-justified">
+          <p>
+            We investigate whether ProtLLM can achieve in-context learning on the human PPI prediction task. The following figure presents the in-context learning performance on human PPI with varying numbers of demonstration examples. Our model consistently achieves higher PPI accuracy with an increasing number of demonstration examples, demonstrating its effective in-context learning capability for protein-centric tasks. In comparison, the model performs drastically worse upon removing the multi-protein scientific articles, and fails to learn in context with the 2, 6, and 12 demonstrations. We believe that the in-context learning capability of our model could empower biologists to apply it to specialized tasks that lack annotated data, using minimal examples.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="static/images/exp2.png" alt="exp2" width="50%">
+          <p>In-context learning results on human PPI.</p>
+          <br>
+        </div>
+
+        <h2 class="title is-3">Text-Guided Functional Protein Retrieval</h2>
+        <div class="content has-text-justified">
+          <p>
+            This experiment aims to study the capability of ProtLLM to retrieve functional proteins based on text prompts and demonstrations. For this purpose, we apply ProtLLM to enzyme mining, which is a critical stage in enzyme and metabolic engineering pipelines. In this experiment, we evaluate our model on mining carboxylate reductases that transform various ketoacids into their corresponding aldehydes. Four ketoacid reactants, i.e., 2-ketoisovaleric acid (IsoC5), pyruvic acid (C3), 2-ketovaleric acid (C5), and 2-ketooctanoic acid (C8) are employed for evaluation. Using a reported enzyme for IsoC5, ketoisovalerate decarboxylase (KIVD), as the query, we first search for a pool of enzyme candidates by BLASTp, where the pools with the size of 500 and 1000 are respectively tested. 
+            We then leverage ProtLLM to retrieve active enzymes from the pool for each reactant in two modes.
+          </p>
+
+        </div>
+        <div class="content has-text-centered">
+          <img src="static/images/enzyme_mining.png" alt="exp2" width="100%">
+          <p>Top-1 enzyme mining results based on <b>ProtLLM</b> retrieval and AutoDock Vina post-screening. \(K_{cat}/K_M\) and \(K_{cat}\) measure enzyme activity (higher the better). Vina energy measures binding affinity (lower the better).</p>
+          <br>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            In the following table, we report the recall of active enzymes at top 10, 20, and 50 ranked candidates. It is observed that in-context learning outperforms zero-shot retrieval on 18 out of 24 metrics, which verifies that ProtLLM can learn from a few demonstrations and improve its enzyme mining performance based on such knowledge. To study the top-ranked enzymes by ProtLLM more in depth, we employ AutoDock Vina to further screen the top-20 enzymes found by in-context learning and pick the one with the lowest Vina energy for visualization. As shown in the figure above, the lead enzymes selected in this way are all with good properties, possessing high enzyme activity (i.e., high \(K_{cat} / K_M\) and \(K_{cat}\) values) and low binding energy measured by AutoDock Vina. These results altogether prove the effectiveness of ProtLLM on enzyme mining.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="static/images/exp3.png" alt="exp2" width="60%">
+          <p>Performance comparisons between zero-shot retrieval and in-context learning on enzyme mining. Top-10, 20 and 50 Recall are reported.</b> </p>
+          <br>
+        </div>
+      </div>
+    </div>
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>BibTex Code Here</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
